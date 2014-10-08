@@ -1,0 +1,136 @@
+<html>
+<head>
+<title>Excel Input</title>
+<link href="resources/css/site.css" type="text/css" rel = "stylesheet">
+<script src="resources/ee/excellentexport.js"></script>
+</head>
+<body>
+<div class="solid">
+<div class="top"><br>
+<a href = "main.html"><img src="resources/assets/ScoutBannerRuckus.png" height= "200" width = "639" class="mainpic"></a>
+<img src="resources/assets/sponsor.png" height="84" width="305" class="sponsor" >
+</div>
+<div class="menu">
+<a href="input.html"><button class="menuclick" style="margin-left: 33%;">Input Data</button></a>
+<button class="menuclick" >Review Data</button>
+<button class="menuclick" >How to Use</button>
+</div>
+<div class="bodysite">
+<h1>Match Data Input</h1>
+<button onclick="parse()">TEST</button>
+<!--<form action="php/match_entry.php" method="post">-->
+Team number:<input type="number" name="team"> </br>
+</br>
+<h3>Autonomous:</h3>
+Shot high:<input type="radio" name="shot_auton" value="high"></br>
+Shot low:<input type="radio" name="shot_auton" value="low"></br>
+Missed:<input type="radio" name="shot_auton" value="missed_auton"></br> <!-- TODO:add these fields to the database and to the php script -->
+Hot goal:<input type="checkbox" name="hot" value="hot"></br>
+Drove forward:<input type="checkbox" name="drove_auton" value="drove"></br>
+</br>
+<h3>Main game:</br></h3>
+
+<p>Catches:<input type="number" name="bar_catch" id="0">
+<button onclick="increment('0')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/plus.png" width="20" height="20"></button>
+<button onclick="decrement('0')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/minus.png" width="20" height="20"></button></br>
+
+Passes:<input type="number" name="passes" id="1">
+<button onclick="increment('1')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/plus.png" width="20" height="20"></button>
+<button onclick="decrement('1')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/minus.png" width="20" height="20"></button></br>
+
+Assists:<input type="number" name="recieved" id="2">
+<button onclick="increment('2')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/plus.png" width="20" height="20"></button>
+<button onclick="decrement('2')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/minus.png" width="20" height="20"></button></br>
+
+High goals:<input type="number" name="goal_high" id="3">
+<button onclick="increment('3')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/plus.png" width="20" height="20"></button>
+<button onclick="decrement('3')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/minus.png" width="20" height="20"></button></br>
+
+Low goals:<input type="number" name="goal_low" id="4">
+<button onclick="increment('4')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/plus.png" width="20" height="20"></button>
+<button onclick="decrement('4')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/minus.png" width="20" height="20"></button></br>
+
+Missed goals:<input type="number" name="missed" id="5">
+<button onclick="increment('5')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/plus.png" width="20" height="20"></button>
+<button onclick="decrement('5')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/minus.png" width="20" height="20"></button></br>
+
+Fouls:<input type = "number" name = "fouls" id="6">
+<button onclick="increment('6')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/plus.png" width="20" height="20"></button>
+<button onclick="decrement('6')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/minus.png" width="20" height="20"></button></br>
+
+Technical Fouls:<input type = "number" name = "tech_fouls" id="7">
+<button onclick="increment('7')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/plus.png" width="20" height="20"></button>
+<button onclick="decrement('7')" src="resources/assets/plus.png" type="button" class="inc"><img src="resources/assets/minus.png" width="20" height="20"></button></br>
+
+</br>
+Won:<input type="radio" name="won" value="won"></br>
+Lost:<input type="radio" name="won" value="lost"></br></br>
+
+<h3>Tags:</h3>
+Offense:<input type="checkbox" name="tags" id="tags">
+Defense:<input type="checkbox" name="tags" id="tags">
+Broken:<input type="checkbox" name="tags" id="tags">
+Fast:<input type="checkbox" name="tags" id="tags">
+Slow:<input type="checkbox" name="tags" id="tags">
+</p>
+<input type="submit" onclick="getData()">
+</form>
+</div>
+<table id ="data" border="1"></table>
+<a download="test.xls" href="#" onclick="return ExcellentExport.excel(this, 'data', 'Sheet Name Here');">Export to Excel</a>
+
+</div>
+
+<script>
+
+function increment(x){
+		var s=document.getElementById(x).value;
+	if(s==""){
+		document.getElementById(x).value=1;
+	}else{
+		var v=parseInt(s);
+		v+=1;
+		document.getElementById(x).value=v;
+	}
+}
+
+function decrement(x){
+		var s = document.getElementById(x).value;
+	if (s == ""){
+		document.getElementById(x).value = 1; }
+	else{
+		var v = parseInt(s); 
+		v -= 1;
+		document.getElementById(x).value = v;
+	}
+}
+
+function getData(){
+	var data = [,,,,,,,];
+	var table = document.getElementById('data');
+	var row = table.insertRow(0);
+	for(var j = 0; j < 8; j++){
+	var x = j.toString();
+	data[j] = document.getElementById(x).value;}
+		alert(data);
+	for(var i = 0; i < 8; i++){
+	var cellMake = row.insertCell(i);
+	cellMake.innerHTML = data[i];}	
+	//var cell1 = row.insertCell(0);
+	//cell1.innerHTML = data[0];
+	
+}
+function parse()
+{
+	var e = "b";
+	var g = parseInt(e, 16);
+	alert(g);
+}
+function setData(){
+
+
+}
+
+</script>
+</body>
+</html>
