@@ -1,0 +1,58 @@
+@font-face {
+	font-family: cabin;
+	src: url('../fonts/Cabin-Regular.ttf');
+}
+html
+{
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+.top
+{
+	margin-top: -1.6%;
+	margin-left: -1%;
+	margin-right: -1%;
+	background-color: #8B0000;
+	height: 235px;
+}
+.mainpic
+{
+	margin-left: 17%;
+	margin-top: 1%;
+}
+
+.sponsor
+{
+	margin-bottom: 5%;
+	margin-left: 2%;
+}
+
+.menu
+{
+	background-color: #C00000;
+	height: 50px;
+	margin-left: -1%;
+	margin-right: -1%;
+}
+.menuclick
+{
+	height: 50px;
+	width: 150px;
+	background-color: #EE0000;
+	border: 1px solid #000000;
+	font-size: 16px;
+}
+.bodysite
+{
+	background-color: #EE2C2C;
+	height:800px;
+	margin-left: -1%;
+	margin-right: -1%;
+	margin-top: -1.55%;
+	text-align: center;
+}
+.solid
+{
+	height:1085px;
+	background-color: #FFFFFF;
+}
